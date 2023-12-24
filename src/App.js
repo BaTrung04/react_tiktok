@@ -1,15 +1,30 @@
-import { useState } from 'react';
 import './App.css';
-import Content from './Content';
-
-
+import { Routes, Route, Link } from 'react-router-dom';
+import Home from './Pages/Home';
+import New from './Pages/New';
+import Contact from './Pages/Contact';
 
 function App() {
-  const [show, setshow] = useState(false);
   return (
     <div className="App">
-      <button onClick={() => setshow(!show)}>Show</button>
-      {show && <Content />}
+      <nav>
+        <ul>
+          <li>
+            <Link to='/'>Home</Link>
+          </li>
+          <li>
+            <Link to='/news'>News</Link>
+          </li>
+          <li>
+            <Link to='/contact'>Contact</Link>
+          </li>
+        </ul>
+      </nav>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/news' element={<New />} />
+        <Route path='/contact' element={<Contact />} />
+      </Routes>
     </div>
   );
 }
